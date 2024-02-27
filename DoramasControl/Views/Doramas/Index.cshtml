@@ -1,85 +1,68 @@
-﻿@model List<DoramasControl.Models.DoramasModel>
+﻿@model IEnumerable<DoramasModel>
+@{
+    ViewData["title"] = "Doramas";
+}
 
-<h1>Doramas</h1>
+<div class="container">
 
-<p>
-    <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo dorama</a>
-</p>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Minha lista de Doramas</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model[0].Nacionalidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].QtdEpisodios)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].DataInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].DataFim)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <div>
+            <a class="btn btn-success mx-2" asp-controller="Doramas" asp-action="Create"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo Dorama</a>
+        </div>
+    </div>
+
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-dark" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-dark" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <table id="Doramas" class="table table-dark table-hover mt-5">
+        <br/>
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nacionalidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QtdEpisodios)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataFim)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" data-toggle="modal" data-target="#Delete">Delete</a>
-                   
-                    <div class="modal" id="Delete" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Confirmar Exclusão</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Tem certeza de que deseja excluir este registro?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Excluir</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
+                <th scope="col">Nacionalidade</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Status</th>
+                <th scope="col">Quantidade de Episódios</th>
+                <th scope="col">Data de Início</th>
+                <th scope="col">Data de Finalização</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-<
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                @foreach (var dorama in Model)
+                {
+                    <tr>
+                        <th scope="row">@dorama.Nacionalidade</th>
+                        <td>@dorama.Nome</td>
+                        <td>@dorama.Status</td>
+                        <td>@dorama.QtdEpisodios</td>
+                        <td>@dorama.DataInicio</td>
+                        <td>@dorama.DataFim</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@dorama.Id">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@dorama.Id" data-toggle="modal" data-target="#Delete">Excluir</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
 

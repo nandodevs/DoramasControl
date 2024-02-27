@@ -1,8 +1,8 @@
-﻿@model DoramasControl.Models.DoramasModel
+﻿@model DoramasModel
 
 <h1>Adicione um Dorama✌️</h1>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" asp-controller="Doramas" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">

@@ -1,40 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DoramasControl.Models;
-using System;
-using System.Linq;
+using DoramasControl.Data;
 
 namespace DoramasControl.Controllers
 {
-    public class DoramasController : Controller
+    public class DoramasController(ApplicationDbContext db) : Controller
     {
         // Simula um banco de dados ou contexto real
-        private static readonly List<DoramasModel> _doramasList = new List<DoramasModel>();
+        readonly private ApplicationDbContext _doramasList = db;
 
         // GET: Doramas
         public IActionResult Index()
         {
-            return View(_doramasList);
-        }
-
-        // GET: Doramas/Details/5
-        public IActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            DoramasModel dorama = _doramasList.FirstOrDefault(m => m.Id == id);
-
-            if (dorama == null)
-            {
-                return NotFound();
-            }
-
-            return View(dorama);
+            IEnumerable<DoramasModel> doramas = _doramasList.Doramas;
+            return View(doramas);
         }
 
         // GET: Doramas/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -43,99 +26,106 @@ namespace DoramasControl.Controllers
         // POST: Doramas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Nacionalidade,Nome,Status,QtdEpisodios,DataInicio,DataFim")] DoramasModel dorama)
+        public IActionResult Create([Bind("Id,Nacionalidade,Nome,Status,QtdEpisodios,DataInicio,DataFim")] DoramasModel doramas)
         {
             if (ModelState.IsValid)
             {
-                dorama.Id = _doramasList.Count + 1;
-                _doramasList.Add(dorama);
+                _doramasList.Doramas.Add(doramas);
+                _doramasList.SaveChanges();
+                TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!";
+
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(dorama);
+            return View(doramas);
         }
 
-        // GET: Doramas/Edit/5
+        [HttpGet]
         public IActionResult Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
+                if (id == null || id == 0)
+                {
+                    return NotFound("O ID não foi fornecido ou é inválido.");
+                }
+
+                DoramasModel doramas = _doramasList.Doramas.FirstOrDefault(x => x.Id == id);
+
+                if (doramas == null)
+                {
+                    return NotFound("Nenhum Dorama encontrado com o ID fornecido.");
+                }
+
+                return View(doramas);
             }
-
-            DoramasModel dorama = _doramasList.FirstOrDefault(m => m.Id == id);
-
-            if (dorama == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                // Registre ou manipule a exceção conforme necessário
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
-
-            return View(dorama);
         }
 
-        // POST: Doramas/Edit/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Nacionalidade,Nome,Status,QtdEpisodios,DataInicio,DataFim")] DoramasModel dorama)
+        public IActionResult Edit(DoramasModel dorama)
         {
-            if (id != dorama.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    DoramasModel existingDorama = _doramasList.FirstOrDefault(m => m.Id == id);
-                    if (existingDorama != null)
-                    {
-                        existingDorama.Nacionalidade = dorama.Nacionalidade;
-                        existingDorama.Nome = dorama.Nome;
-                        existingDorama.Status = dorama.Status;
-                        existingDorama.QtdEpisodios = dorama.QtdEpisodios;
-                        existingDorama.DataInicio = dorama.DataInicio;
-                        existingDorama.DataFim = dorama.DataFim;
-                    }
-                }
-                catch (Exception)
-                {
-                    return NotFound();
-                }
-                return RedirectToAction(nameof(Index));
+                _doramasList.Doramas.Update(dorama);
+                _doramasList.SaveChanges();
+
+                TempData["MensagemSucesso"] = "Edição realizada com sucesso!";
+
+                return RedirectToAction("Index");
+
             }
+            TempData["MensagemErro"] = "Erro ao editar o empréstimo!";
             return View(dorama);
         }
 
-        // GET: Doramas/Delete/5
-        public IActionResult Delete(int? id)
+        // POST Deletado
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(DoramasModel dorama)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            DoramasModel dorama = _doramasList.FirstOrDefault(m => m.Id == id);
-
             if (dorama == null)
             {
                 return NotFound();
             }
 
-            return View(dorama);
+            _doramasList.Doramas.Remove(dorama);
+            _doramasList.SaveChanges();
+
+            TempData["MensagemSucesso"] = "Exclusão realizada com sucesso!";
+            return RedirectToAction("Index");
         }
 
-        // POST: Doramas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        [HttpGet] //Obter Excluídos por ID
+        public IActionResult Delete(int? id)
         {
-            DoramasModel dorama = _doramasList.FirstOrDefault(m => m.Id == id);
-            if (dorama != null)
+            try
             {
-                _doramasList.Remove(dorama);
+                if (id == null || id == 0)
+                {
+                    return NotFound("O ID não foi fornecido ou é inválido.");
+                }
+
+                DoramasModel doramas = _doramasList.Doramas.FirstOrDefault(x => x.Id == id);
+
+                if (doramas == null)
+                {
+                    return NotFound("Nenhum empréstimo encontrado com o ID fornecido.");
+                }
+
+                return View(doramas);
             }
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                // Registre ou manipule a exceção conforme necessário
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
     }
 }
