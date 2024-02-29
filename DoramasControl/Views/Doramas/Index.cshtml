@@ -55,8 +55,8 @@
                         <td>@dorama.DataInicio</td>
                         <td>@dorama.DataFim</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@dorama.Id">Editar</a>
-                            <a asp-action="Delete" asp-route-id="@dorama.Id" data-toggle="modal" data-target="#Delete">Excluir</a>
+                            <a class="btn btn-warning mx-2" asp-action="Edit" asp-route-id="@dorama.Id">Editar</a>
+                            <a class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@dorama.Id">Excluir</a>
                         </td>
                     </tr>
                 }

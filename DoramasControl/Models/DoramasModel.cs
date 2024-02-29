@@ -30,7 +30,6 @@ namespace DoramasControl.Models
         [Required(ErrorMessage = "Digite a data que você está iniciando o Dorama!")]
         public DateTime? DataInicio { get; set; }
 
-
         public DateTime? DataFim { get; set; }
     }
 }

@@ -13,9 +13,5 @@ namespace DoramasControl.Data
 
         public DbSet<DoramasModel> Doramas { get; set; }
 
-        internal DoramasModel FirstOrDefault(Func<object, bool> value)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
