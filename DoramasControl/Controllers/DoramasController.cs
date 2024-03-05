@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoramasControl.Data;
 using DoramasControl.Models;
-using DoramasControl.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DoramasControl.Controllers
 {
@@ -15,8 +15,9 @@ namespace DoramasControl.Controllers
             return View(doramas);
         }
 
+
         [HttpGet]
-        public IActionResult Excluir(int? id)
+        public IActionResult Delete(int? id)
         {
             try
             {
@@ -25,8 +26,7 @@ namespace DoramasControl.Controllers
                     return NotFound("O ID não foi fornecido ou é inválido.");
                 }
 
-                DoramasModel doramas = _db.Doramas.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
-
+                DoramasModel doramas = _db.Doramas.FirstOrDefault(x => x.Id == id);
 
                 if (doramas == null)
                 {
@@ -44,7 +44,7 @@ namespace DoramasControl.Controllers
 
 
         [HttpGet]
-        public IActionResult Editar(int? id)
+        public IActionResult Edit(int? id)
         {
             try
             {
@@ -53,8 +53,7 @@ namespace DoramasControl.Controllers
                     return NotFound("O ID não foi fornecido ou é inválido.");
                 }
 
-                DoramasModel doramas = _db.Doramas.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
-
+                DoramasModel doramas = _db.Doramas.FirstOrDefault(x => x.Id == id);
 
                 if (doramas == null)
                 {
@@ -72,13 +71,13 @@ namespace DoramasControl.Controllers
 
 
         [HttpGet]
-        public IActionResult Cadastrar()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(DoramasModel doramas)
+        public IActionResult Create(DoramasModel doramas)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +92,7 @@ namespace DoramasControl.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(DoramasModel doramas)
+        public IActionResult Edit(DoramasModel doramas)
         {
             if (ModelState.IsValid)
             {
@@ -107,10 +106,11 @@ namespace DoramasControl.Controllers
 
             TempData["MensagemErro"] = "Erro ao editar o empréstimo!";
             return View(doramas);
+
         }
 
         [HttpPost]
-        public IActionResult Excluir(DoramasModel doramas)
+        public IActionResult Delete(DoramasModel doramas)
         {
             if (doramas == null)
             {
@@ -125,4 +125,3 @@ namespace DoramasControl.Controllers
         }
     }
 }
-
