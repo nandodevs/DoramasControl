@@ -76,6 +76,11 @@ namespace DoramasControl.Controllers
             return View();
         }
 
+        public IActionResult Kdramas()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Create(DoramasModel doramas)
         {
