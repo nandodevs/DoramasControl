@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">Meus Doramas</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,18 +36,22 @@
                         
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Localizar dorama">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Procurar</button>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome do Dorama">
+                        <button type="button" id="btnSearch" class="btn btn-primary">Procurar</button>
+                       
+
                     </form>
                 </div>
             </div>
         </nav>
     </header>
+    <div id="resultContainer"></div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -57,6 +61,51 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Adicione este script após o jQuery -->
+    <script>
+        $(document).ready(function () {
+            $("#btnSearch").click(function () {
+                // Obtém o valor da barra de busca
+                var query = $("#searchInput").val();
+
+                // Faz a chamada à API
+                $.ajax({
+                    url: "https://kuryana.vercel.app/search/q/" + query,
+                    method: "GET",
+                    success: function (data) {
+                        // Verifica se a propriedade 'results' existe e se há dramas na resposta
+                        if (data.results && data.results.dramas) {
+                            // Pega a primeira entrada na lista de dramas (supondo que seja o que você quer)
+                            var drama = data.results.dramas[0];
+
+                            // Verifica se a propriedade 'title' existe no objeto retornado
+                            if (drama && drama.title !== undefined) {
+                                // Exemplo de exibição em uma div
+                                $("#resultContainer").html(
+                                    "<img src='" + drama.thumb + "' alt='Thumb'>" +
+                                    "<br>Nome: " + drama.title +
+                                    "<br>Ano: " + drama.year +
+                                    "<br>Tipo: " + drama.type
+                                );
+                            } else {
+                                console.log("A propriedade 'title' não foi encontrada nos dados da API.");
+                            }
+                        } else {
+                            console.log("Não foram encontrados dramas nos dados da API.");
+                        }
+                    },
+                    error: function (error) {
+                        console.log("Erro na chamada da API: " + error);
+                        // Adicione lógica para lidar com erros, se necessário
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
