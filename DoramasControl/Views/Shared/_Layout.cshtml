@@ -28,19 +28,14 @@
                             <a class="nav-link" text-light" asp-area="" asp-controller="Doramas" asp-action="Index">Doramas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Doramas" asp-action="Kdramas">Notícias</a>
+                            <a class="nav-link" text-light" asp-area="" asp-controller="Home" asp-action="Kdramas">Notícias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Doramas" asp-action="Sobre">Sobre</a>
+                            <a class="nav-link" text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
                         </li>
                         
                     </ul>
-                    <form class="d-flex">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome do Dorama">
-                        <button type="button" id="btnSearch" class="btn btn-primary">Procurar</button>
-                       
-
-                    </form>
+                    
                 </div>
             </div>
         </nav>
@@ -103,9 +98,6 @@
             });
         });
     </script>
-
-
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

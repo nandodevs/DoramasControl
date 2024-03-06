@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Doramas\About..cshtml" />
-    <None Include="Views\Doramas\Blog.cshtml" />
-    <None Include="Views\Doramas\Contact.cshtml" />
-    <None Include="Views\Doramas\Kdramas.cshtml" />
+    <None Include="Views\Home\Dashboard.cshtml" />
+    <None Include="Views\Home\Blog.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Kdramas.cshtml" />
     <None Include="wwwroot\css\.DS_Store" />
     <None Include="wwwroot\js\.DS_Store" />
   </ItemGroup>
