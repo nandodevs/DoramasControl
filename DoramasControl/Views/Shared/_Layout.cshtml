@@ -28,7 +28,7 @@
                             <a class="nav-link" text-light" asp-area="" asp-controller="Doramas" asp-action="Index">Doramas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Home" asp-action="Kdramas">Notícias</a>
+                            <a class="nav-link" text-light" asp-area="" asp-controller="Drama" asp-action="Index">News</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
@@ -57,47 +57,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Adicione este script após o jQuery -->
-    <script>
-        $(document).ready(function () {
-            $("#btnSearch").click(function () {
-                // Obtém o valor da barra de busca
-                var query = $("#searchInput").val();
-
-                // Faz a chamada à API
-                $.ajax({
-                    url: "https://kuryana.vercel.app/search/q/" + query,
-                    method: "GET",
-                    success: function (data) {
-                        // Verifica se a propriedade 'results' existe e se há dramas na resposta
-                        if (data.results && data.results.dramas) {
-                            // Pega a primeira entrada na lista de dramas (supondo que seja o que você quer)
-                            var drama = data.results.dramas[0];
-
-                            // Verifica se a propriedade 'title' existe no objeto retornado
-                            if (drama && drama.title !== undefined) {
-                                // Exemplo de exibição em uma div
-                                $("#resultContainer").html(
-                                    "<img src='" + drama.thumb + "' alt='Thumb'>" +
-                                    "<br>Nome: " + drama.title +
-                                    "<br>Ano: " + drama.year +
-                                    "<br>Tipo: " + drama.type
-                                );
-                            } else {
-                                console.log("A propriedade 'title' não foi encontrada nos dados da API.");
-                            }
-                        } else {
-                            console.log("Não foram encontrados dramas nos dados da API.");
-                        }
-                    },
-                    error: function (error) {
-                        console.log("Erro na chamada da API: " + error);
-                        // Adicione lógica para lidar com erros, se necessário
-                    }
-                });
-            });
-        });
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
