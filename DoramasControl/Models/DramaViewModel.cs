@@ -4,7 +4,7 @@
     {
         public string imagem { get; set; }
         public string titulo { get; set; }
-        public double classificacao { get; set; }
+        public string classificacao { get; set; }
     }
 
 }
