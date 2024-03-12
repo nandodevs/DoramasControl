@@ -27,7 +27,7 @@
             @TempData["MensagemErro"]
         </div>
     }
-
+    MenuFunction();
     <table id="Doramas" class="table table-dark table-hover mt-5">
         <br/>
         <thead>
@@ -42,7 +42,7 @@
             </tr>
         </thead>
         <tbody>
-
+            
             @if (Model != null)
             {
                 @foreach (var dorama in Model)
@@ -61,7 +61,12 @@
                     </tr>
                 }
             }
+            
         </tbody>
     </table>
 </div>
+<script src="~/js/menu.js" asp-append-version="true"></script>
+
+
+
 

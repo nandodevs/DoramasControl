@@ -4,7 +4,7 @@
     {
         public string imagem { get; set; }
         public string titulo { get; set; }
-        public string classificacao { get; set; }
+        public float classificacao { get; set; }
     }
 
 }

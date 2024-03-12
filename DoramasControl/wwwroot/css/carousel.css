@@ -7,6 +7,7 @@
 .carousel-container {
     overflow: hidden;
     width: 100%;
+    text-align: center;
 }
 
 .carousel {
@@ -25,11 +26,15 @@
 }
 
 .carousel-title {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
+    color: white;
+    
 }
 
 .carousel-rating {
-    font-size: 14px;
-    color: #888;
+    color: gold;
+    font-size: 20px; /* Tamanho maior para as estrelas */
+    margin-top: 5px;
+    background-color:tomato;
 }

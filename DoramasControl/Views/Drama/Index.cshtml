@@ -1,48 +1,49 @@
-@model DramaViewModel[]
+ï»¿@model DramaViewModel[]
 
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/drama.css" asp-append-version="true" />
-<!-- Adicione a biblioteca jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- Adicione a slick carousel -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/carousel.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/font-awesome.min.css" asp-append-version="true" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Wp6w+az9FZI25ZsP0LCqLdLdTPXq7hVZdP7dFDuYWFvG1n+Zq4ZL7rKFf08xKRbjkgnQJz5VAi1/xouKg7eKvQ==" crossorigin="anonymous" />
 
 <body class="bg-black">
-    <div>
-        @foreach (var drama in Model)
-        {
-            <div style="display: inline-block; margin: 10px;">
-                <img class="" src="@drama.imagem" alt="Drama Image" width="150" height="200">
-                <p class="h5 text-center text-white">@drama.titulo</p>
-                <p class="rating text-center text-white">
-                    @for (int i = 0; i < Convert.ToDouble(drama.classificacao); i++)
-                    {
-                        <i class="font-weight-bold"></i>
-                    }
-                </p>
+    
+    <div id="doramas" class="carousel-container">
+        <div class="row">
+            @foreach (var drama in Model)
+            {
 
+                <div class="drama">
+                    <div class="imagem">
+                        <img src="@drama.imagem" alt="Drama Image" />
+                    </div>
+
+                    <div class="informacoes">
+                        <h5 class="carousel-title">@drama.titulo</h5>
+                        <div class="carousel-rating">
+                            @drama.classificacao.ToString("0.0")
+                            @for (int i = 0; i < Math.Min(4, Math.Floor(drama.classificacao)); i++)
+                            {
+                                <span>&#9733;</span>
+                            }
+                            @if (drama.classificacao % 1 > 0)
+                            {
+                                <span>&#9734;</span>
+                            }
+                            @for (int i = 0; i < 5 - Math.Ceiling(drama.classificacao); i++)
+                            {
+                                <span>&#9734;</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }  
             </div>
-        }
-    </div>
-    <!-- Adicione o script slick carousel -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-    <!-- Seu script personalizado para inicializar o slick carousel -->
-    <script>
-        $(document).ready(function () {
-            $('.sliderContent').slick({
-                slidesToShow: 3, // Número de slides visíveis
-                slidesToScroll: 1, // Número de slides a rolar por vez
-                autoplay: true, // Reprodução automática
-                autoplaySpeed: 2000, // Velocidade da reprodução automática (em milissegundos)
-            });
-        });
-    </script>
-
+        sliderFunction();
+   </div>
 </body>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/netflix.js" asp-append-version="true"></script>
+<script src="~/js/slider.js" asp-append-version="true"></script>

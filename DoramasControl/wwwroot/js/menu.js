@@ -1,11 +1,7 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿MenuFunction();
 
-// Write your JavaScript code.
-newFunction();
-
-function newFunction() {
-    $(document).ready(function () {
+function MenuFunction() {
+    $(document).ready(function() {
         $('#Doramas').DataTable({
             language: {
                 "decimal": "",
@@ -32,8 +28,8 @@ function newFunction() {
                 }
             }
         });
-        setTimeout(function () {
-            $(".alert").fadeOut("slow", function () {
+        setTimeout(function() {
+            $(".alert").fadeOut("slow", function() {
                 $(this).alert("close");
             });
         }, 5000);
