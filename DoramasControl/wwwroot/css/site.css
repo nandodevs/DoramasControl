@@ -2,6 +2,25 @@ html {
   font-size: 14px;
 }
 
+.background-image-slider {
+    position: absolute;
+    width: 100%;
+    float: left;
+    margin-right: -100%;
+    position: relative;
+    opacity: 0;
+    display: block;
+    z-index: 1;
+    height: 245px;
+}
+
+
+.angkor-regular {
+    font-family: "Angkor", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;

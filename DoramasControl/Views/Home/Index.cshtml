@@ -1,76 +1,89 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Doramas</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+    <title>Doramas COntrol</title>
+    <link rel="stylesheet" href="~/css/site.css">
+	<link rel="stylesheet" href="~/css/style.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="~/css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="~/css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="~/css/bootstrap.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="~/css/magnific-popup.css">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="~/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="~/css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="~/css/style.css">
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 2em;
-        }
-
-        section {
-            padding: 2em;
-            text-align: center;
-        }
-
-        .dorama-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1em;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
 </head>
-
 <body>
-    <header>
-        <h1>Controle de Doramas</h1>
-        <p>Gerencie seus doramas favoritos de maneira fácil e divertida!</p>
-    </header>
-
-    <section>
-        <h2>Explore os Doramas</h2>
-        <img src="https://images.pexels.com/photos/5009084/pexels-photo-5009084.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Dorama Image" class="dorama-image">
-        <p>Descubra novos doramas e mantenha o controle de sua jornada assistindo episódio por episódio.</p>
-    </section>
-
-    <section>
-        <h2>Registre seus Favoritos</h2>
-        <img src="https://images.pexels.com/photos/5010719/pexels-photo-5010719.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Favorite Dorama" class="dorama-image">
-        <p>Cadastre seus doramas favoritos e acompanhe seu progresso com facilidade.</p>
-    </section>
-
-    <footer>
-        &copy; 2024 - Controle de Doramas - <a href="#">Política de Privacidade</a>
-    </footer>
+	<div class="background-image-slider">
+		<ul class="slides">
+			<li style="background-image: src(~/images/imagem1.jpg);">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+						<div class="slider-text-inner">
+							<h2>Explore the new template.</h2>
+							<p><a href="http://twitter.com/freshdesignweb" target="_blank" class="btn btn-primary btn-lg">Assistir</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url(~/images/imagem2.jpg);">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+						<div class="slider-text-inner">
+							<h2>Explore the new template.</h2>
+							<p><a href="http://twitter.com/freshdesignweb" target="_blank" class="btn btn-primary btn-lg">Assistir</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url(~/images/imagem3.jpg);">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+						<div class="slider-text-inner">
+							<h2>Explore the new template.</h2>
+							<p><a href="http://twitter.com/freshdesignweb" target="_blank" class="btn btn-primary btn-lg">Assistir</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+    </div>
+	<script src="~/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="~/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="~/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="~/js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="~/js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="~/js/jquery.countTo.js"></script>
+	<!-- Flexslider -->
+	<script src="~/js/jquery.flexslider-min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="~/js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="~/js/main.js"></script>
+    
 </body>
-
 </html>
+
 

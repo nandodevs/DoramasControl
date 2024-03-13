@@ -7,31 +7,34 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DoramasControl.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Angkor&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Meus Doramas</a>
+        <nav class="navbar navbar-expand-lg bg-dark" role="navigation" data-bs-theme="dark">
+            <div class="container-fluid" style="font-family: 'Angkor, cursive'">
+                <a class="navbar-brand text-light" href="#">Meus Doramas</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
+                <div class="col-xs-10 text-right menu-1 main-nav" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link active text-light" style="color:gold" asp-controller="Home" asp-action="Index">
                                 Home🏠
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Doramas" asp-action="Index">Minha Lista📰</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Doramas" asp-action="Index">Minha Lista 📰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Drama" asp-action="Index">Doramas🤞</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Drama" asp-action="Index">Doramas 🤞</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard🌟</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard 🌟</a>
                         </li>
                     </ul>
                 </div>
@@ -46,8 +49,8 @@
     </div>
     
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-bottom footer text-muted bg-black">
+        <div class="container flex-lg-row">
             &copy; 2024 - Controle de Doramas by NandoDevs - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

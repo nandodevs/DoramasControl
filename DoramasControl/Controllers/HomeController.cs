@@ -24,19 +24,6 @@ namespace DoramasControl.Controllers
             return View();
         }
 
-        public IActionResult Kdramas()
-        {
-            // Simulação de dados do carrossel
-            var carouselItems = new List<CarouselItem>
-        {
-            new CarouselItem { Imagem = "url_imagem_1", Titulo = "Título 1", Classificacao = 9.5F },
-            new CarouselItem { Imagem = "url_imagem_2", Titulo = "Título 2", Classificacao = 8.7F },
-            // Adicione mais itens conforme necessário
-        };
-
-            return View(carouselItems);
-        }
-
         public IActionResult Privacy()
         {
             return View();
