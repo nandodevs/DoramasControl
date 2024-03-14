@@ -11,5 +11,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.background-image-slider').style.backgroundImage = images[index];
     }
 
-    setInterval(changeBackgroundImage, 5000); // Mude de imagem a cada 5 segundos (5000 milissegundos)
+    setInterval(changeBackgroundImage, 10000); // Mude de imagem a cada 5 segundos (5000 milissegundos)
 });

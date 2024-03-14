@@ -1,53 +1,102 @@
-﻿<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
-<div class="slider" >
-    <div class="slide">
-		<div class="container">
-			<div class="col-md-50 col-md-offset-1 text-center slider-text">
-				<div class="slider-text-inner">
-					<h2 class="align-content-center text-white bg-secondary">Alquimia das Almas - Parte 1</h2>
-					<p><a href="https://v.mydramalist.com/298/29858c81fe45027d55d1d2c79841ab9a.mp4" target="_top" class="btn btn-primary btn-lg">Trailer</a></p>
+﻿<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<style>
+	slide {
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 100%; /* Adicione isso para evitar que as imagens ultrapassem a largura da tela */
+	}
+
+		.slide img {
+			width: 80%;
+			height: auto;
+			filter: brightness(10%);
+
+		}
+
+	.slider-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		
+		transform: translate(-50%, -50%);
+		color: white;
+		z-index: 1;
+	}
+	.h2{
+		color:black;
+		background-color:gold;
+		font-size:45px;
+	}
+</style>
+
+<script>
+	function abrirPopup(url) {
+		var width = 800;
+		var height = 600;
+		var left = (screen.width - width) / 2;
+		var top = (screen.height - height) / 2;
+		var options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
+		window.open(url, "popup", options);
+		return false; // Para evitar que o link seja seguido normalmente
+	}
+</script>
+<div class="ubea-flex">
+	<div class="slider">
+		<div class="slide">
+			<div class="container">
+				<div class="col-md-50 col-md-offset-1 text-center slider-text">
+					<div class="slider-text-inner">
+						<h2 class="h2">Alquimia das Almas - Parte 1</h2>
+						<p><a href="https://www.youtube.com/embed/71wzQWAX5RI" onclick="return abrirPopup(this.href);"
+							   class="btn btn-primary btn-lg">Assistir Trailer</a>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-    </div>
-    <div class="slide">
-		<div class="container">
-			<div class="col-md-50 col-md-offset-1 text-center slider-text">
-				<div class="slider-text-inner">
-					<h2 class="align-content-center text-white bg-secondary">O Rei de Porcelana</h2>
-					<p><a href="https://v.mydramalist.com/298/29858c81fe45027d55d1d2c79841ab9a.mp4" target="_top" class="btn btn-primary btn-lg">Trailer</a></p>
+		<div class="slide">
+			<div class="container">
+				<div class="col-md-50 col-md-offset-1 text-center slider-text">
+					<div class="slider-text-inner">
+						<h2 class="h2">O Rei de Porcelana</h2>
+						<p><a href="https://www.youtube.com/embed/oWfxsT2K-2A, autoplay" onclick="return abrirPopup(this.href);" class="btn btn-primary btn-lg">Assitir trailer</a></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    <div class="slide">
-		<div class="container">
-			<div class="col-md-50 col-md-offset-1 text-center slider-text">
-				<div class="slider-text-inner">
-					<h2 class="align-content-center text-white bg-secondary">Melancia Cintilante</h2>					
-					<p><a href="https://v.mydramalist.com/298/29858c81fe45027d55d1d2c79841ab9a.mp4" target="_top" class="btn btn-primary btn-lg">Trailer</a></p>
+		<div class="slide">
+			<div class="container">
+				<div class="col-md-50 col-md-offset-1 text-center slider-text">
+					<div class="slider-text-inner">
+						<h2 class="h2">Melancia Cintilante</h2>
+						<p><a href="https://www.youtube.com/embed/DqceSqn0hiA" onclick="return abrirPopup(this.href);" class="btn btn-primary btn-lg">Assitir trailer</a></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    <div class="slide">
-		<div class="container">
-			<div class="col-md-50 col-md-offset-1 text-center slider-text">
-				<div class="slider-text-inner">
-					<h2 class="align-content-center text-white bg-secondary">Goblin</h2>					
-					<p><a href="https://v.mydramalist.com/298/29858c81fe45027d55d1d2c79841ab9a.mp4" target="_top" class="btn btn-primary btn-lg">Trailer</a></p>
+		<div class="slide">
+			<div class="container">
+				<div class="col-md-50 col-md-offset-1 text-center slider-text">
+					<div class="slider-text-inner">
+						<h2 class="h2">Goblin</h2>
+						<p><a href="https://www.youtube.com/embed/S94ukM8C17A" onclick="return abrirPopup(this.href);" class="btn btn-primary btn-lg">Assitir trailer</a></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    <div class="slide">
-		<div class="container">
-			<div class="col-md-50 col-md-offset-1 text-center slider-text">
-				<div class="slider-text-inner">
-					<h2 class="align-content-center text-white bg-secondary">
-						Mulher Forte, Do Bong Soon
-					</h2>
-					<p><a href="https://v.mydramalist.com/298/29858c81fe45027d55d1d2c79841ab9a.mp4" target="_blank" class="btn btn-primary btn-lg">Trailer</a></p>
+		<div class="slide">
+			<div class="container">
+				<div class="col-md-50 col-md-offset-1 text-center slider-text">
+					<div class="slider-text-inner">
+						<h2 class="h2">
+							Mulher Forte, Do Bong Soon
+						</h2>
+						<p><a href="https://www.youtube.com/embed/fd9kkvDfpns" onclick="return abrirPopup(this.href);" class="btn btn-primary btn-lg">Assitir trailer</a></p>
+					</div>
 				</div>
 			</div>
 		</div>

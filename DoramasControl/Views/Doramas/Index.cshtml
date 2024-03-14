@@ -4,9 +4,9 @@
 }
 
 <div class="container">
-
-    <div class="d-flex justify-content-between align-items-center mb-5">
-        <h1>Minha lista de Doramas</h1>
+    <br />
+    <div class="d-flex justify-content-between align-items-right mb-5">
+        <h1 class="text-white">Minha lista de Doramas</h1>
 
         <div>
             <a class="btn btn-success mx-2" asp-controller="Doramas" asp-action="Create"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo Dorama</a>
@@ -27,9 +27,8 @@
             @TempData["MensagemErro"]
         </div>
     }
-    MenuFunction();
-    <table id="Doramas" class="table table-dark table-hover mt-5">
-        <br/>
+    <table id="Doramas" class="container table table-dark table-hover">
+        
         <thead>
             <tr>
                 <th scope="col">Nacionalidade</th>
@@ -61,10 +60,10 @@
                     </tr>
                 }
             }
-            
         </tbody>
     </table>
 </div>
+<br />
 <script src="~/js/menu.js" asp-append-version="true"></script>
 
 
