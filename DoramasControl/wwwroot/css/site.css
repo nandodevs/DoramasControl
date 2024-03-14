@@ -76,6 +76,12 @@ body {
         font-size: 16px;
     }
 
+#ubea-hero .flexslider .slider-text > .slider-text-inner {
+    display: table-cell;
+    vertical-align: middle;
+    min-height: 700px;
+}
+
 /*Image Slider*/
 .slider {
     overflow: hidden;
