@@ -29,8 +29,8 @@ namespace DoramasControl.Models
         public int QtdEpisodios { get; set; }
 
         [Required(ErrorMessage = "Digite a data que você está iniciando o Dorama!")]
-        public DateTime DataInicio { get; set; }
+        public DateOnly DataInicio { get; set; }
 
-        public DateTime? DataFim { get; set; }
+        public DateOnly? DataFim { get; set; }
     }
 }

@@ -2,11 +2,15 @@
 @{
     ViewData["title"] = "Doramas";
 }
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
     <br />
     <div class="d-flex justify-content-between align-items-right mb-5">
-        <h1 class="text-white">Minha lista de Doramas</h1>
+        <h1 class="text-black">Minha lista de Doramas</h1>
 
         <div>
             <a class="btn btn-success mx-2" asp-controller="Doramas" asp-action="Create"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo Dorama</a>
@@ -27,8 +31,8 @@
             @TempData["MensagemErro"]
         </div>
     }
-    <table id="Doramas" class="container table table-dark table-hover">
-        
+    <table id="Doramas" class="table table-striped table-bordered">
+
         <thead>
             <tr>
                 <th scope="col">Nacionalidade</th>
@@ -40,8 +44,8 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            
+        <tbody class="">
+
             @if (Model != null)
             {
                 @foreach (var dorama in Model)
@@ -53,9 +57,12 @@
                         <td>@dorama.QtdEpisodios</td>
                         <td>@dorama.DataInicio</td>
                         <td>@dorama.DataFim</td>
-                        <td>
-                            <a class="btn btn-warning mx-2" asp-action="Edit" asp-route-id="@dorama.Id">Editar</a>
-                            <a class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@dorama.Id">Excluir</a>
+                        <td class="d-inline-block">
+                            <div class="d-inline-block">
+                                <!-- Adicione esta div -->
+                                <a class="btn btn-warning mx-2 d-inline-block" asp-action="Edit" asp-route-id="@dorama.Id">Editar</a>
+                                <a class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@dorama.Id">Excluir</a>
+                            </div>
                         </td>
                     </tr>
                 }
@@ -65,7 +72,3 @@
 </div>
 <br />
 <script src="~/js/menu.js" asp-append-version="true"></script>
-
-
-
-

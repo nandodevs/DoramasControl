@@ -1,12 +1,27 @@
 ﻿@model DoramasModel
 
-<h1 class="text-white">Adicione um Dorama✌️</h1>
-<div class="container align-content-center text-white">
+<style>
+    /* Estilo para limitar a largura dos campos de texto */
+    .form-control-sm {
+        max-width: 200px; /* Defina o tamanho máximo que desejar */
+    }
+
+    /* Estilo para alinhar o formulário à esquerda */
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px; /* Largura total do formulário */
+    }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<h1 class="text-black">Adicione um Dorama✌️</h1>
+<div class="container d-inline-block text-white bg-dark">
     <form class="input-sm" asp-action="Create" method="post" asp-controller="Doramas" asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group">
-            <label asp-for="Nacionalidade">Naciolidade</label>
+            <label asp-for="Nacionalidade">Nacionalidade</label>
             <input asp-for="Nacionalidade" class="form-control input-sm" />
             <span asp-validation-for="Nacionalidade" class="text-danger"></span>
         </div>
@@ -47,8 +62,10 @@
         <br />
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
-            <button type="submit" asp-action="Index" class="btn btn-primary btn-sm">Voltar</button>
+            <div class="d-inline-block">
+                <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
+                <button type="submit" asp-action="Index" class="btn btn-primary btn-sm">Voltar</button>
+            </div>
         </div>
     </form>
 </div>
