@@ -1,10 +1,8 @@
 ﻿using DoramasControl.Data;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace DoramasControl.Controllers
 {
-    
     public class DramaController(DramaService dramaService) : Controller
     {
         private readonly DramaService _dramaService = dramaService;

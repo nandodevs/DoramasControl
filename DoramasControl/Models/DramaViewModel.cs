@@ -1,4 +1,6 @@
-﻿namespace DoramasControl.Models
+﻿
+
+namespace DoramasControl.Models
 {
     public class DramaViewModel
     {

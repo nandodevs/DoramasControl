@@ -1,0 +1,44 @@
+﻿@model List<SeriesModel>
+
+@{
+    ViewData["Title"] = "Series";
+}
+
+<h1>Legendado</h1>
+<div class="doramas">
+    @foreach (var dorama in Model)
+    {
+        <div class="dorama">
+            <a href="@dorama.Link">
+                <img src="@dorama.Image" alt="@dorama.Title" />
+            </a>
+            <div class="details">
+                <p>@dorama.Title</p>
+                <p>@dorama.Year</p>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .doramas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .dorama {
+        max-width: 200px;
+        text-align: center;
+    }
+
+        .dorama img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .dorama .details {
+            margin-top: 5px;
+        }
+</style>
