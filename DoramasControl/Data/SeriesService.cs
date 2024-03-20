@@ -1,6 +1,5 @@
 ﻿using DoramasControl.Models;
 
-
 namespace DoramasControl.Data
 {
     
@@ -16,7 +15,7 @@ namespace DoramasControl.Data
         public async Task<SeriesModel[]> GetSeries()
         {
             //Retorno da API no Vercel
-            return await _httpClient.GetFromJsonAsync<SeriesModel[]>(requestUri: "http://127.0.0.1:5000/api/doramas/legendado");
+            return await _httpClient.GetFromJsonAsync<SeriesModel[]>(requestUri: "https://mdl-api-wine.vercel.app/api/series-legendado");
         }
     }
 }

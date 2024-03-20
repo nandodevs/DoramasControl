@@ -19,6 +19,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddHttpClient<DramaService>();
 builder.Services.AddScoped<DramaService>();
 
+//Configuração de Serviços de Conexão com a API de Series Online
+builder.Services.AddHttpClient<SeriesService>();
+builder.Services.AddScoped<SeriesService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
