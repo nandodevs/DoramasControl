@@ -1,31 +1,62 @@
-﻿@model DoramasControl.Models.SeriesModel[]
-
+﻿@model DoramasControl.ViewModels.SeriesViewModel
 
 @{
     ViewData["Title"] = "Series";
 }
-
-<h1>Legendado</h1>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div>
+    <h1 class="title-line">Legendados</h1>
+</div>
 <div class="doramas">
-    @foreach (var dorama in Model)
+    @foreach (var serie in Model.Series)
     {
-        <div class="dorama">
-            <a href="@dorama.Link">
-                <img src="@dorama.Image" alt="@dorama.Title" />
+        <div class="serie">
+            <a href="@serie.Link">
+                <img src="@serie.Image" alt="@serie.Title" />
             </a>
             <div class="details">
-                <p>@dorama.Title</p>
-                <p>@dorama.Year</p>
+                <p style="font-size:16px">@(serie.Title.Length > 20 ? serie.Title.Substring(0, 20) + "..." : serie.Title)</p>
+                <p>@serie.Year</p>
             </div>
         </div>
     }
 </div>
 
+@if (Model.TotalPages > 1)
+{
+    <div class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <a href="/Series/page/@(Model.CurrentPage - 1)" class="prev">&laquo; Anterior</a>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <a href="/Series/page/@i" class="@(i == Model.CurrentPage ? "active" : "")">@i</a>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <a href="/Series/page/@(Model.CurrentPage + 1)" class="next">Próximo &raquo;</a>
+        }
+    </div>
+}
+
+
+
+
 <style>
+    .title-line {
+        position: center;
+        display: inline-block;
+        color: white;
+        text-align: center;
+    }
+
     .doramas {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 10px; /* Reduzido o espaçamento */
     }
 
     .dorama {
@@ -42,4 +73,8 @@
         .dorama .details {
             margin-top: 5px;
         }
+
+            .dorama .details p {
+                margin: 2px; /* Reduzido o espaçamento entre as linhas */
+            }
 </style>

@@ -1,4 +1,5 @@
-﻿namespace DoramasControl.Models
+﻿
+namespace DoramasControl.Models
 {
     public class SeriesModel
     {
@@ -6,5 +7,8 @@
         public string Image { get; set; }
         public string Year { get; set; }
         public string Link { get; set; }
+        
     }
+
+    
 }
