@@ -7,8 +7,16 @@
 <div>
     <h1 class="title-line">Legendados</h1>
 </div>
+
+@{
+    ViewData["Title"] = "Series";
+    int pageSize = 20; // Número de séries por página
+    int pageNumber = 1; // Página atual (pode ser obtida dinamicamente)
+    var seriesToDisplay = Model.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+}
+
 <div class="doramas">
-    @foreach (var serie in Model)
+    @foreach (var serie in seriesToDisplay)
     {
         <div class="title-line">
             <a href="@serie.Link">
@@ -22,6 +30,23 @@
     }
 </div>
 
+<div class="pagination">
+    @if (pageNumber > 1)
+    {
+        <a href="?page=@(pageNumber - 1)" class="arrow">&lt;</a>
+    }
+
+    @for (int i = 1; i <= Math.Ceiling((double)Model.Length / pageSize); i++)
+    {
+        <a href="?page=@i" class="@(i == pageNumber ? "active" : "")">@i</a>
+    }
+
+    @if (pageNumber < Math.Ceiling((double)Model.Length / pageSize))
+    {
+        <a href="?page=@(pageNumber + 1)" class="arrow">&gt;</a>
+    }
+</div>
+
 
 <style>
     .title-line {
@@ -29,6 +54,10 @@
         display: inline-block;
         color: white;
         text-align: center;
+    }
+
+    .arrow {
+        cursor: pointer;
     }
 
     .doramas {
