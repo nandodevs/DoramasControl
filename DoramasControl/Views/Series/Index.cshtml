@@ -1,4 +1,4 @@
-﻿@model DoramasControl.ViewModels.SeriesViewModel
+﻿@model SeriesModel[]
 
 @{
     ViewData["Title"] = "Series";
@@ -8,9 +8,9 @@
     <h1 class="title-line">Legendados</h1>
 </div>
 <div class="doramas">
-    @foreach (var serie in Model.Series)
+    @foreach (var serie in Model)
     {
-        <div class="serie">
+        <div class="title-line">
             <a href="@serie.Link">
                 <img src="@serie.Image" alt="@serie.Title" />
             </a>
@@ -21,28 +21,6 @@
         </div>
     }
 </div>
-
-@if (Model.TotalPages > 1)
-{
-    <div class="pagination">
-        @if (Model.CurrentPage > 1)
-        {
-            <a href="/Series/page/@(Model.CurrentPage - 1)" class="prev">&laquo; Anterior</a>
-        }
-
-        @for (int i = 1; i <= Model.TotalPages; i++)
-        {
-            <a href="/Series/page/@i" class="@(i == Model.CurrentPage ? "active" : "")">@i</a>
-        }
-
-        @if (Model.CurrentPage < Model.TotalPages)
-        {
-            <a href="/Series/page/@(Model.CurrentPage + 1)" class="next">Próximo &raquo;</a>
-        }
-    </div>
-}
-
-
 
 
 <style>

@@ -23,17 +23,13 @@ namespace DoramasControl.Data
             return paginatedSeries;
         }
 
-        internal int GetTotalPages(int pageSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        private async Task<IEnumerable<SeriesModel>> GetAllSeries()
+        
+        public async Task<IEnumerable<SeriesModel>> GetAllSeries()
         {
             // Implemente o código para obter todos os dados do seu armazenamento de dados
             // Por exemplo, banco de dados, chamada de API, etc.
             // Retorna todos os dados
-            return await _httpClient.GetFromJsonAsync<SeriesModel[]>(requestUri: "http://127.0.0.1:5000/api/doramas/legendado");
+            return await _httpClient.GetFromJsonAsync<SeriesModel[]>(requestUri: "http://127.0.0.1:5000/api/series/legendado/");
         }
     }
 }
